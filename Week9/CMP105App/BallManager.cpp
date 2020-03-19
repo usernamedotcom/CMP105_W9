@@ -2,7 +2,6 @@
 
 BallManager::BallManager()
 {
-	spawnPoint = sf::Vector2f(350, 250);
 	texture.loadFromFile("gfx/Beach_Ball.png");
 
 	for (int i = 0; i < 21; i++)
@@ -21,6 +20,7 @@ BallManager::~BallManager()
 
 void BallManager::update(float dt)
 {
+	spawnPoint = sf::Vector2f(rand() % 500 + 400, rand() % 500 + 400);
 	for (int i = 0; i < balls.size(); i++)
 	{
 		if (balls[i].isAlive())
@@ -38,7 +38,7 @@ void BallManager::spawn()
 		if (!balls[i].isAlive())
 		{
 			balls[i].setAlive(true);
-			balls[i].setVelocity(rand() % 20 - 10, rand() % 20 - 10);
+			balls[i].setVelocity(rand() % 200 - 100, rand() % 200 - 100);
 			balls[i].setPosition(spawnPoint);
 			return;
 		}
