@@ -2,7 +2,6 @@
 
 FallBallManager::FallBallManager()
 {
-	spawnPoint = sf::Vector2f(rand() % 1200 - 1, -100);
 	texture.loadFromFile("gfx/Beach_Ball.png");
 	for (int i = 0; i < 21; i++)
 	{
@@ -29,6 +28,8 @@ void FallBallManager::update(float dt)
 		}
 		deathCheck();
 	}
+
+	spawnPoint = sf::Vector2f((rand() % 1200 - 1), -100);
 }
 
 void FallBallManager::spawn()
@@ -38,7 +39,7 @@ void FallBallManager::spawn()
 		if (!balls[i].isAlive())
 		{
 			balls[i].setAlive(true);
-			balls[i].setVelocity(0, rand() % 60 - 10);
+			balls[i].setVelocity(0, rand() % 100 - 10);
 			balls[i].setPosition(spawnPoint);
 			return;
 		}
