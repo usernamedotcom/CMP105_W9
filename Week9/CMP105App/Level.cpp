@@ -1,9 +1,12 @@
 #include "Level.h"
+#include "Ball.h"
+#include "BallManager.h"
 
 Level::Level(sf::RenderWindow* hwnd, Input* in)
 {
 	window = hwnd;
 	input = in;
+	BeachBall.setInput(in);
 
 	// initialise game objects
 
@@ -17,20 +20,20 @@ Level::~Level()
 // handle user input
 void Level::handleInput(float dt)
 {
-
+	FallBeachBallManager.spawn();
 }
 
 // Update game objects
 void Level::update(float dt)
 {
-	
+	FallBeachBallManager.update(dt);
 }
 
 // Render level
 void Level::render()
 {
 	beginDraw();
-
+	FallBeachBallManager.render(window);
 	endDraw();
 }
 
